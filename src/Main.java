@@ -1,4 +1,5 @@
 import javax.lang.model.util.ElementScanner7;
+import java.text.DecimalFormat;
 
 public class Main {
     public static void main(String[] args) {
@@ -82,50 +83,43 @@ public class Main {
             }
 
         }
-        System.out.println("Итого: " + total);
+        System.out.printf("Итого: %f%n", total);
 
         double deposit1 = 15000;
         double total1 = 0;
+        DecimalFormat decimalFormat = new DecimalFormat("0.0");
         for (int i = 0; i <= 108; i++) {
             total1 = total1 + total1 * 0.07;
             total1 = total1 + deposit1;
             if (i % 6 == 0) {
-                System.out.println(" Накопленные за полгода " + i + " накоплено: " + total1 + " рублей");
+                System.out.println(" Накопленные за полгода " + i + " накоплено: " + decimalFormat.format(total1) + " рублей");
             }
         }
-        System.out.println(total1);
+        System.out.println(decimalFormat.format(total1));
 
         //Задача №7.
         System.out.println("Задача №7");
 
         int friday = 3;
-        for (int day = 1; day < 31; day++) {
-            if (day == friday || day == friday + 6 || day == friday + 12 || day == friday + 18 || day == friday + 24) {
-                System.out.println("Пятница! Сдаем отчеты");
-            } else {
-                System.out.println("Сдавать рано");
-            }
+        for (; friday < 31; friday += 7) {
+            System.out.println(" Сегодня пятница, " + friday + "-е необходимо подготовить отчет");
         }
+
         {
-        int com = 79;
-        int yearStart = 1896;
-        int prCom = yearStart+com;
-        int yearFinish = 2054;
-        for (int year = 1896; year <=2054; year++) {
+            int year = 2023;
+            int future = year + 100;
+            int past = year - 200;
+            for (int i = past; i < future; i++) {
+                if (i % 79 == 0) {
 
-            if (year == prCom || year == prCom + com) {
-                System.out.println(" Год " + year + " комета летит");
-
-            } else {
-                System.out.println(" Год " + year + " комета не летит");
-            }
-            }
-            double d = 1e10;
-            System.out.printf("%f%n", d);
-
+                    System.out.println(" Год прилета кометы: " + i);
+                }
             }
         }
     }
+}
+
+
 
 
 
